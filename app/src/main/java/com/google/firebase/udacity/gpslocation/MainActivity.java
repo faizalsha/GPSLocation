@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                Toast.makeText(MainActivity.this, "Location Changed", Toast.LENGTH_SHORT).show();
-                textView.append("\n" + showAddress(location.getLatitude(), location.getLongitude()));
+                textView.setText(showAddress(location.getLatitude(), location.getLongitude()));
                 progressBar.setVisibility(View.GONE);
                 locationManager.removeUpdates(locationListener);
             }
@@ -73,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Button Clicked", Toast.LENGTH_SHORT).show();
                 locate();
             }
         });
@@ -94,15 +92,13 @@ public class MainActivity extends AppCompatActivity {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION},10);
             }
-
-
-            Toast.makeText(this, "LocationListener is attached", Toast.LENGTH_SHORT).show();
+            //return to app activity from request_permission activity
             return;
         }
         //attaching location listener to locationManager
         locationManager.requestLocationUpdates("gps", 1, 20, locationListener);
         progressBar.setVisibility(View.VISIBLE);
-       // Toast.makeText(this, "listener attached", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Getting your location", Toast.LENGTH_SHORT).show();
     }
 
     String showAddress(Double latitude, Double longitude){
@@ -120,4 +116,5 @@ public class MainActivity extends AppCompatActivity {
             return "Some Error Occured";
         }
     }
+
 }

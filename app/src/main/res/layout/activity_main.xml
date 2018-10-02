@@ -10,9 +10,11 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Locate"
         android:layout_gravity="center_vertical"
-        android:layout_margin="16dp"/>
+        android:layout_margin="16dp"
+        android:background="#ff7439"
+        android:fadingEdge="none"
+        android:text="Locate" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,9 +30,13 @@
         android:layout_gravity="center_horizontal"/>
 
     <TextView
+        android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textview"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:text="Your Location"
+        android:textColor="@android:color/darker_gray"
         android:textSize="16sp"
-        android:layout_gravity="center_horizontal"/>
+        android:textStyle="italic" />
 </LinearLayout>
